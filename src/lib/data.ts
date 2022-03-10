@@ -9,7 +9,8 @@ export class DataManager {
     const text = await resp.text();
     return text;
   }
-  private parseYaml(text: string): HallOfFameData {
+
+  parseYaml(text: string): HallOfFameData {
     const data = YAML.parse(text) as HallOfFameData;
     // todo validate
     return data;
