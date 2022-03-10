@@ -1,3 +1,3 @@
-# [champions.toughlovearena.com](https://champions.toughlovearena.com)
+# [champions.toughlovearena.com](https://champions.toughlovearena.com) (WIP)
 
-Hall of Fame
+Externally hosted Hall of Fame
