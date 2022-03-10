@@ -1,0 +1,14 @@
+.App {
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Logo {
+  width: 800px;
+  height: auto;
+  margin-bottom: 1em;
+}

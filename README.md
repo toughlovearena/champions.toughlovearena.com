@@ -1,2 +1,3 @@
-# champions.toughlovearena.com
-The Hall of Fame
+# [champions.toughlovearena.com](https://champions.toughlovearena.com)
+
+Hall of Fame
