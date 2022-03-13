@@ -44,6 +44,7 @@ export function App() {
         <img
           className='Logo'
           src="images/logo.png"
+          alt="Tough Love Arena"
         />
       </div>
       <StatsTitle>The Hall of Fame</StatsTitle>
@@ -60,12 +61,16 @@ export function App() {
 
       <Search
         view={view}
-        setView={setView}
         query={query}
+        setView={setView}
         setQuery={setQuery}
       />
 
-      <Table />
+      <Table
+        data={data}
+        view={view}
+        query={query}
+      />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HallOfFameType, Options, ViewAll, ViewOption } from '../lib/types';
+import { OptionName, Options, ViewOption } from '../lib/types';
 
 
 const OptionSelect = styled.div`
@@ -34,17 +34,6 @@ const SearchBar = styled.input`
   margin: 1em 0.5em;
   padding: 0.4em 1em;
 `;
-
-
-function OptionName(vo: ViewOption) {
-  if (vo === ViewAll) {
-    return 'All';
-  }
-  return {
-    [HallOfFameType.Official]: 'Official',
-    [HallOfFameType.Community]: 'Community',
-  }[vo];
-}
 
 export function Search(props: {
   view: ViewOption;
