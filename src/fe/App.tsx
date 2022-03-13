@@ -9,7 +9,7 @@ import { Search } from './Search';
 import { Header } from './Header';
 
 const AppDiv = styled.div`
-  padding: 1em;
+  padding: 2em;
 
   display: flex;
   flex-direction: column;

@@ -7,6 +7,10 @@ import { CONSTANTS } from '../lib/constants';
 const HeaderDiv = styled.div`
   max-width: 800px;
   text-align: center;
+
+  a {
+    color: var(--heart);
+  }
 `;
 
 const Logo = styled.img`
@@ -28,10 +32,6 @@ const Updated = styled.div`
 `;
 const SocialInfo = styled.div`
   font-size: 1.2em;
-
-  a {
-    color: var(--heart);
-  }
 `;
 
 export function Header(props: {
@@ -44,19 +44,17 @@ export function Header(props: {
   return (
     <HeaderDiv>
       <div>
-        <a href={CONSTANTS.URLs.Game}>
-          <Logo
-            src="images/logo.png"
-            alt="Tough Love Arena"
-          />
-        </a>
+        <Logo
+          src="images/logo.png"
+          alt="Tough Love Arena"
+        />
       </div>
       <StatsTitle>The Hall of Fame</StatsTitle>
       <Updated>
         last updated {updated}
       </Updated>
       <SubTitle>
-        Here we celebrate and immortalize all of the Tough Love Arena champions
+        Here we celebrate and immortalize all of the <a href={CONSTANTS.URLs.Game}>Tough Love Arena</a> champions
       </SubTitle>
       <SocialInfo>
         Want to submit your event to the Hall of Fame?
