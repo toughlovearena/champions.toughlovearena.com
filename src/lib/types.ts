@@ -1,3 +1,4 @@
+
 export enum HallOfFameType {
   Official = 'official',
   Community = 'community',
@@ -22,3 +23,7 @@ export interface HallOfFameEntry {
 export interface HallOfFameData {
   events: HallOfFameEntry[];
 }
+
+export const ViewAll = 'all';
+export type ViewOption = typeof ViewAll | HallOfFameType.Official | HallOfFameType.Community;
+export const Options: ViewOption[] = [ViewAll, HallOfFameType.Official, HallOfFameType.Community];
