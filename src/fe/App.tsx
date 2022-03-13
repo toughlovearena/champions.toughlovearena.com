@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import './App.css';
 import { Table } from './Table';
 import { useEffect, useState } from "react";
 import { HallOfFameData, ViewAll, ViewOption } from "../lib/types";
@@ -9,15 +8,42 @@ import { sleep, sortArray } from "../lib/util";
 import { Search } from './Search';
 import { CONSTANTS } from '../lib/constants';
 
+const AppDiv = styled.div`
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Header = styled.div`
+  max-width: 800px;
+  text-align: center;
+`;
+
+const Logo = styled.img`
+  width: 600px;
+  height: auto;
+`;
+
 const StatsTitle = styled.div`
-  font-size: 2em;
-  margin-top: 1em;
+  font-size: 3em;
 `;
-const SmallerText = styled.div`
+const SubTitle = styled.div`
+  font-size: 1.5em;
 `;
-const SocialInfo = styled(SmallerText)`
-  margin-top: 0.5em;
-  margin-bottom: 0.8em;
+const Updated = styled.div`
+  width: 100%;
+  text-align: right;
+  font-style: italic;
+`;
+const SocialInfo = styled.div`
+  font-size: 1.2em;
+
+  a {
+    color: var(--heart);
+  }
 `;
 
 export function App() {
@@ -39,25 +65,26 @@ export function App() {
   ) ?? '???';
 
   return (
-    <div className="App">
-      <div>
-        <img
-          className='Logo'
-          src="images/logo.png"
-          alt="Tough Love Arena"
-        />
-      </div>
-      <StatsTitle>The Hall of Fame</StatsTitle>
-      <div>
-        Here we celebrate and immortalize all of the Tough Love Arena champions
-      </div>
-      <SmallerText>
-        <i>last updated {updated}</i>
-      </SmallerText>
-      <SocialInfo>
-        Want to submit your event to the Hall of Fame?
-        Send us an <a href={CONSTANTS.External.Email}>email</a> or message us on <a href={CONSTANTS.External.Twitter}>Twitter</a>
-      </SocialInfo>
+    <AppDiv>
+      <Header>
+        <div>
+          <Logo
+            src="images/logo.png"
+            alt="Tough Love Arena"
+          />
+        </div>
+        <StatsTitle>The Hall of Fame</StatsTitle>
+        <Updated>
+          last updated {updated}
+        </Updated>
+        <SubTitle>
+          Here we celebrate and immortalize all of the Tough Love Arena champions
+        </SubTitle>
+        <SocialInfo>
+          Want to submit your event to the Hall of Fame?
+          Send us an <a href={CONSTANTS.External.Email}>email</a> or message us on <a href={CONSTANTS.External.Twitter}>Twitter</a>
+        </SocialInfo>
+      </Header>
 
       <Search
         view={view}
@@ -71,6 +98,6 @@ export function App() {
         view={view}
         query={query}
       />
-    </div>
+    </AppDiv>
   );
 }
