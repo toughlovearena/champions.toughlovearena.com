@@ -3,6 +3,14 @@ export function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(() => resolve(), ms));
 }
 
+export function range(length: number): number[] {
+  const out = [] as number[];
+  for (let i = 0; i < length; i++) {
+    out.push(i);
+  }
+  return out;
+}
+
 type Comparable = number | string;
 type CompareOut = -1 | 0 | 1;
 function compare(a: number, b: number): CompareOut;
@@ -29,4 +37,11 @@ export function sortArray(arr: number[]): number[];
 export function sortArray(arr: string[]): string[];
 export function sortArray(arr: any[]): any[] {
   return sortArrayOfObjects(arr, elm => elm);
+}
+
+export function getNextInArray<T>(elm: T, arr: T[], matcher?: (a: T, b: T) => boolean): T {
+  const matchingElm = matcher ? arr.filter(e => matcher(e, elm))[0] : undefined;
+  const index = arr.indexOf(matchingElm ?? elm);
+  const newIndex = (arr.length + index + 1) % arr.length;
+  return arr[newIndex];
 }

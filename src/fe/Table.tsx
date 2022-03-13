@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { HallOfFameData } from "../lib/types";
 import { DataManager } from '../lib/data';
-import { sleep, sortArrayOfObjects } from "../lib/util";
+import { sleep } from "../lib/util";
+import { Legacy } from "./Legacy";
 
 export function Table() {
   const [data, setData] = useState<HallOfFameData>();
@@ -19,14 +20,5 @@ export function Table() {
     return <div>loading...</div>;
   }
 
-  const sorted = sortArrayOfObjects(data.events, evt => evt.date).reverse();
-  return (
-    <div>
-      {sorted.map(evt => (
-        <div>
-          {evt.name}
-        </div>
-      ))}
-    </div>
-  )
+  return <Legacy data={data} />;
 }
