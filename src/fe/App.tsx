@@ -8,9 +8,11 @@ import { sleep } from "../lib/util";
 import { Search } from './Search';
 import { Header } from './Header';
 import { CONSTANTS } from '../lib/constants';
+import { Background } from './Background';
 
 const AppDiv = styled.div`
   padding: 1em;
+  color: white;
 
   display: flex;
   flex-direction: column;
@@ -42,19 +44,18 @@ export function App() {
       <Header
         data={data}
       />
-
       <Search
         view={view}
         query={query}
         setView={setView}
         setQuery={setQuery}
       />
-
       <Table
         data={data}
         view={view}
         query={query}
       />
+      <Background />
     </AppDiv>
   );
 }
