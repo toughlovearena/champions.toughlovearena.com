@@ -12,6 +12,7 @@ export function Spinner(props: {
         width,
       }}
       src='images/spinner.gif'
+      alt="loading"
     />
   );
 }
