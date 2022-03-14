@@ -10,7 +10,7 @@ import { Header } from './Header';
 import { CONSTANTS } from '../lib/constants';
 
 const AppDiv = styled.div`
-  padding: 2em;
+  padding: 1em;
 
   display: flex;
   flex-direction: column;

@@ -1,18 +1,31 @@
 import { useCallback, useState } from "react";
 import styled from 'styled-components';
-import { HallOfFameData, OptionName, ViewAll, ViewOption } from "../lib/types";
+import { HallOfFameData, HallOfFameEntry, OptionName, ViewAll, ViewOption } from "../lib/types";
 import { getNextInArray, sortArrayOfObjects } from "../lib/util";
 import { Spinner } from "./Spinner";
+import { CONSTANTS } from '../lib/constants';
 
 const TableDiv = styled.div`
-  font-size: 20px;
+  ${CONSTANTS.isMobile ? `
+    font-size: 14px;
+    width: 100%;
+  ` : `
+    font-size: 20px;
+  `}
 `;
 const LeaderboardHeader = styled.div`
+  ${CONSTANTS.isMobile ? `
+    font-size: 20px;
+  ` : `
+  `}
   & > * > * {
     padding-left: 0;
   }
 `;
 const LeaderboardBody = styled.div`
+  a {
+    color: white;
+  }
   & > *:nth-child(odd) {
     background: rgba(80, 80, 80, 0.5);
   }
@@ -66,6 +79,23 @@ const LinksCell = styled(NormalCell)`
     margin-right: 0.5em;
   }
 `;
+const MobileInfoCell = styled(NormalCell)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  flex-grow: 1;
+
+  & > * {
+    margin: 0.3em 0;
+  }
+`;
+const MobileEntrantsCell = styled(EntrantsCell)`
+  width: auto;
+  justify-content: flex-end;
+  padding-right: 1em;
+`;
 
 enum SortBy {
   Date,
@@ -103,6 +133,30 @@ function renderSortIcon(isCurrent: boolean, sortOrder: SortOrder) {
     sortOrder === SortOrder.Ascending ? '🔼' : '🔽'
   ) : '⏺️';
   return <div>{sortIcon}</div>;
+}
+
+function MobileLinkable(props: {
+  event: HallOfFameEntry;
+  children: JSX.Element;
+}) {
+  const { event } = props;
+  function getChallongeUrl(challonge: string) {
+    return challonge.startsWith('https://') ? challonge : `https://challonge.com/${challonge}`;
+  }
+  const url = (
+    (event.youtube && `https://youtube.com/watch?v=${event.youtube}`) ||
+    (event.challonge && getChallongeUrl(event.challonge)) ||
+    undefined
+  );
+
+  if (url) {
+    return (
+      <a href={url}>
+        {props.children}
+      </a>
+    );
+  }
+  return props.children;
 }
 
 export function Table(props: {
@@ -150,6 +204,51 @@ export function Table(props: {
   const rows = sortOrder === SortOrder.Ascending
     ? sortedAscending
     : sortedAscending.reverse();
+
+  if (CONSTANTS.isMobile) {
+    return (
+      <TableDiv>
+        <LeaderboardHeader>
+          <FlexRow>
+            <DateCell
+              isClickable={true}
+              onClick={() => updateSort(SortBy.Date)}
+            >
+              <div><u>Date</u></div>
+            </DateCell>
+            <MobileInfoCell>
+              <div>
+                Tournament Info
+              </div>
+            </MobileInfoCell>
+            <MobileEntrantsCell
+              isClickable={true}
+              onClick={() => updateSort(SortBy.EntrantNum)}
+            >
+              <div><u>#</u></div>
+            </MobileEntrantsCell>
+          </FlexRow>
+        </LeaderboardHeader>
+        <LeaderboardBody>
+          {rows.map((row, ri) => (
+            <FlexRow key={ri}>
+              <DateCell>{row.date}</DateCell>
+              <MobileInfoCell>
+                <MobileLinkable event={row}>
+                  <div>
+                    {row.name}
+                  </div>
+                </MobileLinkable>
+                <div>
+                  {row.winner}
+                </div>
+              </MobileInfoCell>
+              <MobileEntrantsCell>{row.entrants}</MobileEntrantsCell>
+            </FlexRow>
+          ))}
+        </LeaderboardBody>
+      </TableDiv>);
+  }
 
   return (
     <TableDiv>

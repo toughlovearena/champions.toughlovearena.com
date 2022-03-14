@@ -5,6 +5,7 @@ import { sortArray } from "../lib/util";
 import { CONSTANTS } from '../lib/constants';
 
 const HeaderDiv = styled.div`
+  padding: 1em;
   text-align: center;
 
   ${CONSTANTS.isMobile ? `
