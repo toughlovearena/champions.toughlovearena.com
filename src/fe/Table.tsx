@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import styled from 'styled-components';
 import { HallOfFameData, HallOfFameEntry, OptionName, ViewAll, ViewOption } from "../lib/types";
 import { getNextInArray, range, sortArrayOfObjects } from "../lib/util";
+import { Spinner } from "./Spinner";
 
 const TableDiv = styled.div`
   font-size: 20px;
@@ -123,7 +124,7 @@ export function Table(props: {
   }, [sortBy, sortOrder]);
 
   if (!props.data) {
-    return <div>loading...</div>;
+    return <Spinner height="10em" />;
   }
 
   const { events } = props.data;

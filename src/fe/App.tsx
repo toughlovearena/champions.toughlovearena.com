@@ -25,8 +25,9 @@ export function App() {
   useEffect(() => {
     (async () => {
       const dm = new DataManager();
-      const data = await dm.fetchEvents();
-      await sleep(1000); // todo temp
+      const fetchPromise = dm.fetchEvents();
+      await Promise.all([fetchPromise, sleep(1000)]);
+      const data = await fetchPromise;
       setData(data);
     })();
   }, []);
