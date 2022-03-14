@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from 'styled-components';
-import { HallOfFameData, HallOfFameEntry, OptionName, ViewAll, ViewOption } from "../lib/types";
-import { getNextInArray, range, sortArrayOfObjects } from "../lib/util";
+import { HallOfFameData, OptionName, ViewAll, ViewOption } from "../lib/types";
+import { getNextInArray, sortArrayOfObjects } from "../lib/util";
 import { Spinner } from "./Spinner";
 
 const TableDiv = styled.div`
@@ -83,7 +83,6 @@ const DefaultOrder: Record<SortBy, SortOrder> = {
   [SortBy.WinnerName]: SortOrder.Ascending,
   [SortBy.EntrantNum]: SortOrder.Descending,
 }
-const minRows = 11;
 
 function renderChallonge(challonge?: string) {
   if (!challonge) { return null; }
@@ -148,11 +147,9 @@ export function Table(props: {
         return sortArrayOfObjects(filtered, entry => entry.entrants);
     }
   })();
-  const rows: (HallOfFameEntry | undefined)[] = sortOrder === SortOrder.Ascending
+  const rows = sortOrder === SortOrder.Ascending
     ? sortedAscending
     : sortedAscending.reverse();
-  const missingRows = Math.max(0, minRows - rows.length);
-  rows.push(...range(missingRows).map(() => undefined));
 
   return (
     <TableDiv>
@@ -187,7 +184,7 @@ export function Table(props: {
         </FlexRow>
       </LeaderboardHeader>
       <LeaderboardBody>
-        {rows.map((row, ri) => row ? (
+        {rows.map((row, ri) => (
           <FlexRow key={ri}>
             <DateCell>{row.date}</DateCell>
             <NameCell>{row.name}</NameCell>
@@ -198,15 +195,6 @@ export function Table(props: {
               {renderChallonge(row.challonge)}
               {renderYouTube(row.youtube)}
             </LinksCell>
-          </FlexRow>
-        ) : (
-          <FlexRow key={ri}>
-            <DateCell>&nbsp;</DateCell>
-            <NameCell>&nbsp;</NameCell>
-            <ChampionCell>&nbsp;</ChampionCell>
-            <EntrantsCell>&nbsp;</EntrantsCell>
-            <CategoryCell>&nbsp;</CategoryCell>
-            <LinksCell>&nbsp;</LinksCell>
           </FlexRow>
         ))}
       </LeaderboardBody>
