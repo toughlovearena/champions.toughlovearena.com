@@ -1795,6 +1795,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/is-mobile@^2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@types/is-mobile/-/is-mobile-2.1.4.tgz#132d20fdb159caefdb916d8978dd36f1d2f54f66"
+  integrity sha512-VgtIcn8wEhZ1PcFpIp0Mbz5rNdF44zVba69tmmunlbwvopr2Mw32s32s/KJDIb06fgCGB7sIilvEffrSQFmZ7Q==
+  dependencies:
+    is-mobile "*"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
@@ -4925,6 +4932,11 @@ is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3, is-glob@~4.0.1:
   dependencies:
     is-extglob "^2.1.1"
 
+is-mobile@*, is-mobile@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-3.1.0.tgz#d1d053ed1bdc97b6bf95843d11ea9eb83380cc29"
+  integrity sha512-BUeEDcth3Mj03fZ+Xo+amAvER9snFH8cx8A5GTHmWFZmKcIPqpQ5fAsDH6EGstRoLGdFnSZWXImK5IPh534enw==
+
 is-module@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-module/-/is-module-1.0.0.tgz#3258fb69f78c14d5b815d664336b4cffb6441591"
@@ -5963,6 +5975,11 @@ mkdirp@^0.5.5, mkdirp@~0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+mobile-device-detect@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/mobile-device-detect/-/mobile-device-detect-0.4.3.tgz#05d73b4bde7ccb5beda1c4bd0ea0986ce30b1f3f"
+  integrity sha512-SN9EBE9SoJgkb83kuUVoIp3R9OGYE5dYEnLEz2oLooh0DzgtQ72BJmpNGqrgFvmfE4iLR2CaVJ3RjUcStheVZg==
 
 ms@2.0.0:
   version "2.0.0"
