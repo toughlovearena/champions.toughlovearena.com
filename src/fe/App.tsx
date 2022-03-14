@@ -7,6 +7,7 @@ import { DataManager } from '../lib/data';
 import { sleep } from "../lib/util";
 import { Search } from './Search';
 import { Header } from './Header';
+import { CONSTANTS } from '../lib/constants';
 
 const AppDiv = styled.div`
   padding: 2em;
@@ -15,6 +16,10 @@ const AppDiv = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  ${CONSTANTS.isMobile ? `
+    max-width: 100%;
+    ` : ``}
 `;
 
 export function App() {

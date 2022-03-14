@@ -7,12 +7,15 @@ const OptionSelect = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
+  margin: 0.5em;
 `;
 const CategorySelect = styled.div<{ highlight: boolean }>`
   cursor: pointer;
   font-size: 0.8rem;
 
-  margin: 1em 0.5em;
+  margin: 0.5em;
   padding: 0.5em 1em;
 
   border-radius: 2rem;
@@ -31,7 +34,7 @@ const SearchBar = styled.input`
   border-radius: 1em;
   width: 10em;
 
-  margin: 1em 0.5em;
+  margin: 0.5em;
   padding: 0.4em 1em;
 `;
 

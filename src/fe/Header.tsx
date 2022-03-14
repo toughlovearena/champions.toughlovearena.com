@@ -5,8 +5,14 @@ import { sortArray } from "../lib/util";
 import { CONSTANTS } from '../lib/constants';
 
 const HeaderDiv = styled.div`
-  ${CONSTANTS.isMobile ? 'max-width: 90%;' : 'max-width: 800px;'}
   text-align: center;
+
+  ${CONSTANTS.isMobile ? `
+    max-width: 100%;
+    ` : `
+    max-width: 800px;
+    font-size: 1.5em;
+  `}
 
   a {
     color: var(--heart);
@@ -20,18 +26,20 @@ const Logo = styled.img`
 `;
 
 const StatsTitle = styled.div`
-  font-size: 3em;
+  font-size: 2em;
 `;
 const SubTitle = styled.div`
-  font-size: 1.5em;
+  font-size: 1em;
+  margin: 1em 0;
 `;
 const Updated = styled.div`
   width: 100%;
   text-align: right;
   font-style: italic;
+  font-size: 0.8em;
 `;
 const SocialInfo = styled.div`
-  font-size: 1.2em;
+  font-size: 0.8em;
 `;
 
 export function Header(props: {
