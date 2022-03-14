@@ -5,7 +5,7 @@ import { sortArray } from "../lib/util";
 import { CONSTANTS } from '../lib/constants';
 
 const HeaderDiv = styled.div`
-  max-width: 800px;
+  ${CONSTANTS.isMobile ? 'max-width: 90%;' : 'max-width: 800px;'}
   text-align: center;
 
   a {
@@ -14,6 +14,7 @@ const HeaderDiv = styled.div`
 `;
 
 const Logo = styled.img`
+  max-width: 100%;
   width: 600px;
   height: auto;
 `;
