@@ -64,8 +64,11 @@ const NameCell = styled(NormalCell)`
 const ChampionCell = styled(NormalCell)`
   width: 10em;
 `;
-const EntrantsCell = styled(NormalCell)`
+const EntrantsHeaderCell = styled(NormalCell)`
   width: 6em;
+`;
+const EntrantsBodyCell = styled(EntrantsHeaderCell)`
+  justify-content: flex-end;
 `;
 const CategoryCell = styled(NormalCell)`
   width: 6em;
@@ -91,7 +94,7 @@ const MobileInfoCell = styled(NormalCell)`
     margin: 0.3em 0;
   }
 `;
-const MobileEntrantsCell = styled(EntrantsCell)`
+const MobileEntrantsCell = styled(NormalCell)`
   width: auto;
   justify-content: flex-end;
   padding-right: 1em;
@@ -267,13 +270,13 @@ export function Table(props: {
           <ChampionCell>
             <u>Champion</u>
           </ChampionCell>
-          <EntrantsCell
+          <EntrantsHeaderCell
             isClickable={true}
             onClick={() => updateSort(SortBy.EntrantNum)}
           >
             <div><u>Entrants</u></div>
             {renderSortIcon(sortBy === SortBy.EntrantNum, sortOrder)}
-          </EntrantsCell>
+          </EntrantsHeaderCell>
           <CategoryCell>
             <u>Type</u>
           </CategoryCell>
@@ -288,7 +291,7 @@ export function Table(props: {
             <DateCell>{row.date}</DateCell>
             <NameCell>{row.name}</NameCell>
             <ChampionCell>{row.winner}</ChampionCell>
-            <EntrantsCell>{row.entrants}</EntrantsCell>
+            <EntrantsBodyCell>{row.entrants}</EntrantsBodyCell>
             <CategoryCell>{OptionName(row.category)}</CategoryCell>
             <LinksCell>
               {renderChallonge(row.challonge)}
