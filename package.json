@@ -22,6 +22,7 @@
     "yaml": "^1.10.2"
   },
   "scripts": {
+    "data": "git add public/data.yaml && git commit -m 'added events' && git push",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
