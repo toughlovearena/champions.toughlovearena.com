@@ -13,7 +13,7 @@ const LeaderboardHeader = styled.div`
 `;
 const LeaderboardBody = styled.div`
   & > *:nth-child(odd) {
-    background: #202020;
+    background: rgba(80,80,80,0.5);
   }
   & > *:hover {
     color: black;
