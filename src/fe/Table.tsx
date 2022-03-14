@@ -29,10 +29,13 @@ const LeaderboardBody = styled.div`
   & > *:nth-child(odd) {
     background: rgba(80, 80, 80, 0.5);
   }
-  & > *:hover {
-    color: black;
-    background-color: var(--heart);
-  }
+  ${CONSTANTS.isMobile ? `
+  ` : `
+    & > *:hover {
+      color: black;
+      background-color: var(--heart);
+    }
+  `}
 `;
 const FlexRow = styled.div`
   display: flex;
