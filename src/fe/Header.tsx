@@ -20,7 +20,6 @@ const Logo = styled.img`
 
 const StatsTitle = styled.div`
   font-size: 3em;
-  text-decoration: underline;
 `;
 const SubTitle = styled.div`
   font-size: 1.5em;
