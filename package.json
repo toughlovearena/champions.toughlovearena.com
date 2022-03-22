@@ -6,7 +6,7 @@
   "scripts": {
     "data": "git add public/data.yaml && git commit -m 'added events' && git push",
     "lint": "yarn run eslint . --ext .js,.jsx,.ts,.tsx",
-    "prettier": "yarn prettier --write .",
+    "pretty": "yarn prettier --write .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
