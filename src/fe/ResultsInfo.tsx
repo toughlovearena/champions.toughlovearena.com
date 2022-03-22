@@ -8,5 +8,6 @@ export function ResultsInfo(props: {
   return (
     <div style={{ width: '12em', }}>
       Showing {count} {label}
-    </div>);
+    </div>
+  );
 }

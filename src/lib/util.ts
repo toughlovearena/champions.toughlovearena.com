@@ -21,13 +21,13 @@ function compare(a: Comparable, b: Comparable): CompareOut {
 
 export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => number)): void;
 export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => string)): void;
-export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => any)): void {
+export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => any)): void { // eslint-disable-line @typescript-eslint/no-explicit-any
   arr.sort((a, b) => compare(cb(a), cb(b)));
 }
 
 export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => number)): T[];
 export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => string)): T[];
-export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => any)): T[] {
+export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => any)): T[] { // eslint-disable-line @typescript-eslint/no-explicit-any
   const sorted = arr.concat();
   sortArrayInPlace(sorted, cb);
   return sorted;
@@ -35,7 +35,7 @@ export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => any)): T[] {
 
 export function sortArray(arr: number[]): number[];
 export function sortArray(arr: string[]): string[];
-export function sortArray(arr: any[]): any[] {
+export function sortArray(arr: any[]): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
   return sortArrayOfObjects(arr, elm => elm);
 }
 
