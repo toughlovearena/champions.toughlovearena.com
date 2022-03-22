@@ -63,9 +63,11 @@ export function Header(props: { data?: HallOfFameData }) {
         <a href={CONSTANTS.URLs.Game}>Tough Love Arena</a> champions
       </SubTitle>
       <SocialInfo>
-        Want to submit your event to the Hall of Fame? Send us an{" "}
-        <a href={CONSTANTS.URLs.Email}>email</a> or message us on{" "}
-        <a href={CONSTANTS.URLs.Twitter}>Twitter</a>
+        Want to submit your event to the Hall of Fame?
+        <br />
+        Send us an <a href={CONSTANTS.URLs.Email}>email</a>, message us on{" "}
+        <a href={CONSTANTS.URLs.Twitter}>Twitter</a>, or fill out our{" "}
+        <a href={CONSTANTS.URLs.Form}>Google Form</a>
       </SocialInfo>
     </HeaderDiv>
   );
