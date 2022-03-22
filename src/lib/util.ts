@@ -1,6 +1,5 @@
-
 export function sleep(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(() => resolve(), ms));
+  return new Promise((resolve) => setTimeout(() => resolve(), ms));
 }
 
 export function range(length: number): number[] {
@@ -19,15 +18,17 @@ function compare(a: Comparable, b: Comparable): CompareOut {
   return a === b ? 0 : a > b ? 1 : -1;
 }
 
-export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => number)): void;
-export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => string)): void;
-export function sortArrayInPlace<T>(arr: T[], cb: ((obj: T) => any)): void { // eslint-disable-line @typescript-eslint/no-explicit-any
+export function sortArrayInPlace<T>(arr: T[], cb: (obj: T) => number): void;
+export function sortArrayInPlace<T>(arr: T[], cb: (obj: T) => string): void;
+export function sortArrayInPlace<T>(arr: T[], cb: (obj: T) => any): void {
+  // eslint-disable-line @typescript-eslint/no-explicit-any
   arr.sort((a, b) => compare(cb(a), cb(b)));
 }
 
-export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => number)): T[];
-export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => string)): T[];
-export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => any)): T[] { // eslint-disable-line @typescript-eslint/no-explicit-any
+export function sortArrayOfObjects<T>(arr: T[], cb: (obj: T) => number): T[];
+export function sortArrayOfObjects<T>(arr: T[], cb: (obj: T) => string): T[];
+export function sortArrayOfObjects<T>(arr: T[], cb: (obj: T) => any): T[] {
+  // eslint-disable-line @typescript-eslint/no-explicit-any
   const sorted = arr.concat();
   sortArrayInPlace(sorted, cb);
   return sorted;
@@ -35,12 +36,19 @@ export function sortArrayOfObjects<T>(arr: T[], cb: ((obj: T) => any)): T[] { //
 
 export function sortArray(arr: number[]): number[];
 export function sortArray(arr: string[]): string[];
-export function sortArray(arr: any[]): any[] { // eslint-disable-line @typescript-eslint/no-explicit-any
-  return sortArrayOfObjects(arr, elm => elm);
+export function sortArray(arr: any[]): any[] {
+  // eslint-disable-line @typescript-eslint/no-explicit-any
+  return sortArrayOfObjects(arr, (elm) => elm);
 }
 
-export function getNextInArray<T>(elm: T, arr: T[], matcher?: (a: T, b: T) => boolean): T {
-  const matchingElm = matcher ? arr.filter(e => matcher(e, elm))[0] : undefined;
+export function getNextInArray<T>(
+  elm: T,
+  arr: T[],
+  matcher?: (a: T, b: T) => boolean,
+): T {
+  const matchingElm = matcher
+    ? arr.filter((e) => matcher(e, elm))[0]
+    : undefined;
   const index = arr.indexOf(matchingElm ?? elm);
   const newIndex = (arr.length + index + 1) % arr.length;
   return arr[newIndex];

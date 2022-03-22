@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { HallOfFameEntry, OptionName, Options, ViewOption } from '../lib/types';
-import { ResultsInfo } from './ResultsInfo';
+import styled from "styled-components";
+import { HallOfFameEntry, OptionName, Options, ViewOption } from "../lib/types";
+import { ResultsInfo } from "./ResultsInfo";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -22,8 +22,8 @@ const CategorySelect = styled.div<{ highlight: boolean }>`
   border-radius: 2rem;
   border: 1px solid white;
 
-  background-color: ${props => props.highlight ? 'white' : 'black'};
-  color: ${props => props.highlight ? 'black' : 'white'};
+  background-color: ${(props) => (props.highlight ? "white" : "black")};
+  color: ${(props) => (props.highlight ? "black" : "white")};
 
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ export function Search(props: {
 }) {
   return (
     <SearchContainer>
-      {Options.map(vo => (
+      {Options.map((vo) => (
         <CategorySelect
           key={vo}
           highlight={vo === props.view}
@@ -60,7 +60,7 @@ export function Search(props: {
       <SearchBar
         placeholder="Filter events"
         value={props.query}
-        onChange={e => props.setQuery(e.target.value)}
+        onChange={(e) => props.setQuery(e.target.value)}
       />
       <ResultsInfo filtered={props.filtered} />
     </SearchContainer>

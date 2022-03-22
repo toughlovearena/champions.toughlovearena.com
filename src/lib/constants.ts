@@ -1,11 +1,11 @@
-import { isMobile as isMobileV1 } from 'is-mobile';
-import { isMobile as isMobileV2 } from 'mobile-device-detect';
+import { isMobile as isMobileV1 } from "is-mobile";
+import { isMobile as isMobileV2 } from "mobile-device-detect";
 
 export const CONSTANTS = {
-  isMobile: isMobileV1({ tablet: true, }) || isMobileV2,
+  isMobile: isMobileV1({ tablet: true }) || isMobileV2,
   URLs: {
-    Game: 'https://toughlovearena.com',
-    Email: 'mailto:toughlovearena@gmail.com',
-    Twitter: 'https://twitter.com/ToughLoveArena',
+    Game: "https://toughlovearena.com",
+    Email: "mailto:toughlovearena@gmail.com",
+    Twitter: "https://twitter.com/ToughLoveArena",
   },
 };

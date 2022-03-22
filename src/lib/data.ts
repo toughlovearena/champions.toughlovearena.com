@@ -1,8 +1,8 @@
-import YAML from 'yaml';
-import { HallOfFameData } from './types';
+import YAML from "yaml";
+import { HallOfFameData } from "./types";
 
 export class DataManager {
-  readonly path = 'data.yaml';
+  readonly path = "data.yaml";
   private async fetchText(): Promise<string> {
     const now = new Date();
     const resp = await fetch(`${this.path}?v=${now.getTime()}`);

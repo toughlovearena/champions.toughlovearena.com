@@ -21,7 +21,7 @@ const Top = styled(Fixed)`
 `;
 const Bottom = styled(Fixed)`
   background-color: black;
-  background-image: url('images/splash.jpg');
+  background-image: url("images/splash.jpg");
   background-size: cover;
   background-position: center;
 `;
@@ -32,6 +32,5 @@ export function Background() {
       <Bottom></Bottom>
       <Top></Top>
     </>
-  )
-
+  );
 }
