@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import styled from 'styled-components';
-import { HallOfFameData, HallOfFameEntry, OptionName, ViewAll, ViewOption } from "../lib/types";
+import { HallOfFameEntry, OptionName, ViewOption } from "../lib/types";
 import { getNextInArray, sortArrayOfObjects } from "../lib/util";
 import { Spinner } from "./Spinner";
 import { CONSTANTS } from '../lib/constants';
@@ -166,7 +166,7 @@ function MobileLinkable(props: {
 }
 
 export function Table(props: {
-  data?: HallOfFameData;
+  filtered?: HallOfFameEntry[];
   view: ViewOption;
   query: string;
 }) {
@@ -182,29 +182,20 @@ export function Table(props: {
     }
   }, [sortBy, sortOrder]);
 
-  if (!props.data) {
+  if (!props.filtered) {
     return <Spinner height="10em" />;
   }
-
-  const { events } = props.data;
-  const terms = props.query.toLowerCase().split(' ');
-  const filteredByCategory = props.view === ViewAll ? events : events.filter(entry => entry.category === props.view);
-  const filteredBySearch = props.query ? filteredByCategory.filter(entry => {
-    const toMatch = [entry.name.toLowerCase(), entry.winner.toLowerCase()];
-    return terms.every(searchTerm => toMatch.some(data => data.includes(searchTerm)));
-  }) : filteredByCategory;
-  const filtered = filteredBySearch;
 
   const sortedAscending = (() => {
     switch (sortBy) {
       case SortBy.Date:
-        return sortArrayOfObjects(filtered, entry => entry.date);
+        return sortArrayOfObjects(props.filtered, entry => entry.date);
       case SortBy.TournamentName:
-        return sortArrayOfObjects(filtered, entry => entry.name);
+        return sortArrayOfObjects(props.filtered, entry => entry.name);
       case SortBy.WinnerName:
-        return sortArrayOfObjects(filtered, entry => entry.winner);
+        return sortArrayOfObjects(props.filtered, entry => entry.winner);
       case SortBy.EntrantNum:
-        return sortArrayOfObjects(filtered, entry => entry.entrants);
+        return sortArrayOfObjects(props.filtered, entry => entry.entrants);
     }
   })();
   const rows = sortOrder === SortOrder.Ascending

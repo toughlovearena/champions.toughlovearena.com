@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Table } from './Table';
 import { useEffect, useState } from "react";
-import { HallOfFameData, ViewAll, ViewOption } from "../lib/types";
+import { HallOfFameData, HallOfFameEntry, ViewAll, ViewOption } from "../lib/types";
 import { DataManager } from '../lib/data';
 import { sleep } from "../lib/util";
 import { Search } from './Search';
@@ -39,19 +39,32 @@ export function App() {
     })();
   }, []);
 
+  let filtered: HallOfFameEntry[] | undefined;
+  if (data) {
+    const { events } = data;
+    const terms = query.toLowerCase().split(' ');
+    const filteredByCategory = view === ViewAll ? events : events.filter(entry => entry.category === view);
+    const filteredBySearch = query ? filteredByCategory.filter(entry => {
+      const toMatch = [entry.name.toLowerCase(), entry.winner.toLowerCase()];
+      return terms.every(searchTerm => toMatch.some(data => data.includes(searchTerm)));
+    }) : filteredByCategory;
+    filtered = filteredBySearch;
+  }
+
   return (
     <AppDiv>
       <Header
         data={data}
       />
       <Search
+        filtered={filtered}
         view={view}
         query={query}
         setView={setView}
         setQuery={setQuery}
       />
       <Table
-        data={data}
+        filtered={filtered}
         view={view}
         query={query}
       />

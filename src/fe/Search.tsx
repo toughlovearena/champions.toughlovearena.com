@@ -1,19 +1,20 @@
 import styled from 'styled-components';
-import { OptionName, Options, ViewOption } from '../lib/types';
+import { HallOfFameEntry, OptionName, Options, ViewOption } from '../lib/types';
+import { ResultsInfo } from './ResultsInfo';
 
-
-const OptionSelect = styled.div`
+const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 
+  font-size: 1.3em;
   margin: 0.5em;
 `;
 const CategorySelect = styled.div<{ highlight: boolean }>`
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.8em;
 
   margin: 0.5em;
   padding: 0.5em 1em;
@@ -30,7 +31,7 @@ const CategorySelect = styled.div<{ highlight: boolean }>`
   align-items: center;
 `;
 const SearchBar = styled.input`
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 1em;
   width: 10em;
 
@@ -39,13 +40,14 @@ const SearchBar = styled.input`
 `;
 
 export function Search(props: {
+  filtered?: HallOfFameEntry[];
   view: ViewOption;
-  setView(vo: ViewOption): void;
   query: string;
+  setView(vo: ViewOption): void;
   setQuery(query: string): void;
 }) {
   return (
-    <OptionSelect>
+    <SearchContainer>
       {Options.map(vo => (
         <CategorySelect
           key={vo}
@@ -60,6 +62,7 @@ export function Search(props: {
         value={props.query}
         onChange={e => props.setQuery(e.target.value)}
       />
-    </OptionSelect>
+      <ResultsInfo filtered={props.filtered} />
+    </SearchContainer>
   );
 }
