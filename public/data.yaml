@@ -1,6 +1,12 @@
 ---
 events:
   # official
+  - date: 2022/04/02
+    name: Completely Normal Tournament
+    entrants: 82
+    winner: Handsome Phil
+    category: official
+    challonge: tlanormal
   - date: 2022/01/14
     name: Birthday Tournament
     entrants: 118
